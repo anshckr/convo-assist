@@ -80,7 +80,7 @@ export async function fetchConversationById(id: string) {
 
     return conversation as Conversation;
   } catch (error) {
-    // Sentry.captureException(error);
+    console.error(error);
 
     throw new Error('Failed to fetch Conversation.');
   }

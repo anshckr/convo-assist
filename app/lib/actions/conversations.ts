@@ -35,11 +35,11 @@ export async function createConversation(conversation: Conversation) {
       message: 'Successfully created Conversation',
     };
   } catch (error) {
-    // Sentry.captureException(error);
+    console.error(error);
 
     return {
-      error: 'Failed to create Conversation',
-      message: 'Failed to create Conversation',
+      error: 'Failed to create conversation',
+      message: 'Failed to create conversation',
     };
   }
 }
@@ -75,7 +75,7 @@ export async function updateConversation(id: string, data: Conversation) {
       message: 'Successfully updated Conversation',
     };
   } catch (error) {
-    // Sentry.captureException(error);
+    console.error(error);
 
     return {
       error: 'Failed to update Conversation',
@@ -103,7 +103,7 @@ export async function deleteConversation(id: string) {
 
     revalidatePath('/');
   } catch (error) {
-    // Sentry.captureException(error);
+    console.error(error);
 
     return {
       error: 'Failed to delete Conversation',
