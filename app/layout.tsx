@@ -2,6 +2,8 @@ import { openSans } from '@/app/fonts';
 import type { Metadata } from 'next';
 import './globals.css';
 
+// import './shared/utils/aws-exports';
+
 import { ThemeProvider } from '@/app/material-tailwind';
 import TanStackProvider from '@/app/providers/TanStackProvider';
 import Dashboard from '@/app/ui/dashboard';

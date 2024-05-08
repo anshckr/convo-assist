@@ -1,13 +1,9 @@
 'use server';
 
 import { Conversation } from '@/app/shared/types/conversations';
+import { getConversations } from '@/app/shared/utils/conversations';
 // import * as Sentry from "@sentry/nextjs";
 import { unstable_noStore as noStore } from 'next/cache';
-
-import { promises as fs } from 'fs';
-import path from 'path';
-
-let conversationFilePath = path.join(process.cwd(), 'tmp/conversations.json');
 
 const ITEMS_PER_PAGE = 20;
 export async function fetchFilteredConversations(
@@ -19,8 +15,7 @@ export async function fetchFilteredConversations(
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
   try {
-    const file = await fs.readFile(conversationFilePath, 'utf8');
-    const fileConversations = JSON.parse(file) || [];
+    const fileConversations = await getConversations();
 
     const conversations = fileConversations
       .filter((conversation: Conversation) => {
@@ -44,8 +39,7 @@ export async function fetchConversationsCount(query: string) {
   noStore();
 
   try {
-    const file = await fs.readFile(conversationFilePath, 'utf8');
-    const fileConversations = JSON.parse(file) || [];
+    const fileConversations = await getConversations();
 
     const conversationsCount = fileConversations.filter(
       (conversation: Conversation) => {
@@ -69,8 +63,7 @@ export async function fetchConversationById(id: string) {
   noStore();
 
   try {
-    const file = await fs.readFile(conversationFilePath, 'utf8');
-    const fileConversations = JSON.parse(file) || [];
+    const fileConversations = await getConversations();
 
     const conversation = fileConversations.find(
       (conversation: Conversation) => {

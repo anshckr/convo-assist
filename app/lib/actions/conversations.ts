@@ -2,18 +2,17 @@
 
 // import * as Sentry from "@sentry/nextjs";
 import { Conversation } from '@/app/shared/types/conversations';
+import {
+  getConversations,
+  writeConversations,
+} from '@/app/shared/utils/conversations';
 import { revalidatePath } from 'next/cache';
 
-import { promises as fs } from 'fs';
-import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
-
-let conversationFilePath = path.join(process.cwd(), 'tmp/conversations.json');
 
 export async function createConversation(conversation: Conversation) {
   try {
-    const file = await fs.readFile(conversationFilePath, 'utf8');
-    const fileConversations = JSON.parse(file) || [];
+    const fileConversations = await getConversations();
 
     const newConversation = {
       ...conversation,
@@ -23,10 +22,7 @@ export async function createConversation(conversation: Conversation) {
 
     fileConversations.push(newConversation);
 
-    await fs.writeFile(
-      conversationFilePath,
-      JSON.stringify(fileConversations, null, 2),
-    );
+    await writeConversations(JSON.stringify(fileConversations, null, 2));
 
     revalidatePath('/');
 
@@ -46,9 +42,7 @@ export async function createConversation(conversation: Conversation) {
 
 export async function updateConversation(id: string, data: Conversation) {
   try {
-    const file = await fs.readFile(conversationFilePath, 'utf8');
-
-    let fileConversations = JSON.parse(file) || [];
+    let fileConversations = await getConversations();
 
     fileConversations = fileConversations.map((conversation: Conversation) => {
       if (conversation.id === id) {
@@ -63,10 +57,7 @@ export async function updateConversation(id: string, data: Conversation) {
       return conversation;
     });
 
-    await fs.writeFile(
-      conversationFilePath,
-      JSON.stringify(fileConversations, null, 2),
-    );
+    await writeConversations(JSON.stringify(fileConversations, null, 2));
 
     revalidatePath('/');
 
@@ -86,9 +77,7 @@ export async function updateConversation(id: string, data: Conversation) {
 
 export async function deleteConversation(id: string) {
   try {
-    const file = await fs.readFile(conversationFilePath, 'utf8');
-
-    let fileConversations = JSON.parse(file) || [];
+    let fileConversations = await getConversations();
 
     fileConversations = fileConversations.filter(
       (conversation: Conversation) => {
@@ -96,10 +85,7 @@ export async function deleteConversation(id: string) {
       },
     );
 
-    await fs.writeFile(
-      conversationFilePath,
-      JSON.stringify(fileConversations, null, 2),
-    );
+    await writeConversations(JSON.stringify(fileConversations, null, 2));
 
     revalidatePath('/');
   } catch (error) {
