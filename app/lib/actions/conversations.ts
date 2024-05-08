@@ -8,10 +8,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 
-let conversationFilePath = path.join(
-  process.cwd(),
-  'public/conversations.json',
-);
+let conversationFilePath = path.join(process.cwd(), 'tmp/conversations.json');
 
 export async function createConversation(conversation: Conversation) {
   try {

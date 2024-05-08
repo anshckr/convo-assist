@@ -7,10 +7,7 @@ import { unstable_noStore as noStore } from 'next/cache';
 import { promises as fs } from 'fs';
 import path from 'path';
 
-let conversationFilePath = path.join(
-  process.cwd(),
-  'public/conversations.json',
-);
+let conversationFilePath = path.join(process.cwd(), 'tmp/conversations.json');
 
 const ITEMS_PER_PAGE = 20;
 export async function fetchFilteredConversations(
