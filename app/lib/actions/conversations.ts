@@ -5,14 +5,14 @@ import { Conversation } from '@/app/shared/types/conversations';
 import { revalidatePath } from 'next/cache';
 
 import { promises as fs } from 'fs';
+import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
+
+let conversationFilePath = path.join(process.cwd(), 'conversations.json');
 
 export async function createConversation(conversation: Conversation) {
   try {
-    const file = await fs.readFile(
-      process.cwd() + '/app/conversations.json',
-      'utf8',
-    );
+    const file = await fs.readFile(conversationFilePath, 'utf8');
     const fileConversations = JSON.parse(file) || [];
 
     const newConversation = {
@@ -24,7 +24,7 @@ export async function createConversation(conversation: Conversation) {
     fileConversations.push(newConversation);
 
     await fs.writeFile(
-      process.cwd() + '/app/conversations.json',
+      conversationFilePath,
       JSON.stringify(fileConversations, null, 2),
     );
 
@@ -46,10 +46,7 @@ export async function createConversation(conversation: Conversation) {
 
 export async function updateConversation(id: string, data: Conversation) {
   try {
-    const file = await fs.readFile(
-      process.cwd() + '/app/conversations.json',
-      'utf8',
-    );
+    const file = await fs.readFile(conversationFilePath, 'utf8');
 
     let fileConversations = JSON.parse(file) || [];
 
@@ -67,7 +64,7 @@ export async function updateConversation(id: string, data: Conversation) {
     });
 
     await fs.writeFile(
-      process.cwd() + '/app/conversations.json',
+      conversationFilePath,
       JSON.stringify(fileConversations, null, 2),
     );
 
@@ -89,10 +86,7 @@ export async function updateConversation(id: string, data: Conversation) {
 
 export async function deleteConversation(id: string) {
   try {
-    const file = await fs.readFile(
-      process.cwd() + '/app/conversations.json',
-      'utf8',
-    );
+    const file = await fs.readFile(conversationFilePath, 'utf8');
 
     let fileConversations = JSON.parse(file) || [];
 
@@ -103,7 +97,7 @@ export async function deleteConversation(id: string) {
     );
 
     await fs.writeFile(
-      process.cwd() + '/app/conversations.json',
+      conversationFilePath,
       JSON.stringify(fileConversations, null, 2),
     );
 
