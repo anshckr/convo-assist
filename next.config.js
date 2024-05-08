@@ -52,6 +52,7 @@ const withPWA = withPWAInit({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   productionBrowserSourceMaps: process.env.NODE_ENV === 'production',
   reactStrictMode: false,
   swcMinify: process.env.NODE_ENV === 'production' ? true : false,
