@@ -1,10 +1,7 @@
-import {
-  fetchConversationById,
-} from "@/app/lib/data/conversations";
-import ConversationDetails from "@/app/ui/conversations";
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { ReactNode } from "react";
+import { fetchConversationById } from '@/app/lib/data/conversations';
+import ConversationDetails from '@/app/ui/conversations';
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 type MetaProps = {
   params: { id: string };
@@ -26,8 +23,6 @@ export async function generateMetadata({
 }
 
 type Props = {
-  children: ReactNode;
-} & {
   params: { id: string };
 };
 

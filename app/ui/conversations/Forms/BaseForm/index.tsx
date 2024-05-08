@@ -1,7 +1,11 @@
 'use client';
 
 import { Button, Select, Option, IconButton } from '@/app/material-tailwind';
-import { Conversation, Sender } from '@/app/shared/types/conversations';
+import {
+  Conversation,
+  ConversationStatus,
+  Sender,
+} from '@/app/shared/types/conversations';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { cloneDeepWith } from 'lodash';
 import Link from 'next/link';
@@ -129,7 +133,9 @@ const BaseForm: React.FC<Props> = ({
                 name="status"
                 aria-describedby="status-error"
                 value={statusValue}
-                onChange={(val) => setValue('status', val)}
+                onChange={(val) =>
+                  setValue('status', val as ConversationStatus)
+                }
               >
                 <Option value="open">Open</Option>
                 <Option value="pending">Pending</Option>
@@ -246,7 +252,7 @@ const BaseForm: React.FC<Props> = ({
                         aria-describedby="sender-error"
                         value={getValues(`messages.${index}.sender`)}
                         onChange={(val) =>
-                          setValue(`messages.${index}.sender`, val)
+                          setValue(`messages.${index}.sender`, val as Sender)
                         }
                       >
                         <Option value="agent">Agent</Option>

@@ -47,7 +47,7 @@ const ConversationDetails: React.FC<Props> = ({ conversation }) => {
             const formattedTime = formatter.format(date);
 
             return (
-              <TimelineItem key={message.id} className={'h-28'}>
+              <TimelineItem key={message.sentAt} className={'h-28'}>
                 {index < conversation.messages.length - 1 ? (
                   <TimelineConnector className="!w-[78px]" />
                 ) : null}
