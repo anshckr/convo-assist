@@ -18,11 +18,11 @@ const STATIC_LINKS = [
     },
   },
   {
-    name: 'Contact Management',
-    href: '/contacts',
+    name: 'Customers',
+    href: '/customers',
     icon: CircleStackIcon,
     isActive: (pathname: string) => {
-      return pathname === '/contacts';
+      return pathname === '/customers';
     },
     isDisabled: true,
   },

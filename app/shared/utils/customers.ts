@@ -2,9 +2,9 @@ import { PutObjectCommand, GetObjectCommand } from '@aws-sdk/client-s3';
 
 import S3Singleton from './s3';
 
-const KEY = 'conversations.json';
+const KEY = 'customers.json';
 
-export async function getConversations() {
+export async function getCustomers() {
   const s3 = await S3Singleton.getInstance();
 
   const { Body } = await s3.send(
@@ -23,7 +23,7 @@ export async function getConversations() {
   return JSON.parse(data) || [];
 }
 
-export async function writeConversations(content: string) {
+export async function writeCustomers(content: string) {
   const s3 = await S3Singleton.getInstance();
 
   return await s3.send(

@@ -28,7 +28,7 @@ export async function createConversation(conversation: Conversation) {
 
     return {
       error: '',
-      message: 'Successfully created Conversation',
+      message: 'Successfully created conversation',
     };
   } catch (error) {
     console.error(error);
@@ -63,14 +63,14 @@ export async function updateConversation(id: string, data: Conversation) {
 
     return {
       error: '',
-      message: 'Successfully updated Conversation',
+      message: 'Successfully updated conversation',
     };
   } catch (error) {
     console.error(error);
 
     return {
-      error: 'Failed to update Conversation',
-      message: 'Failed to update Conversation',
+      error: 'Failed to update conversation',
+      message: 'Failed to update conversation',
     };
   }
 }
@@ -92,8 +92,8 @@ export async function deleteConversation(id: string) {
     console.error(error);
 
     return {
-      error: 'Failed to delete Conversation',
-      message: 'Failed to delete Conversation',
+      error: 'Failed to delete conversation',
+      message: 'Failed to delete conversation',
     };
   }
 }
