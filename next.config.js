@@ -54,7 +54,6 @@ const withPWA = withPWAInit({
 const nextConfig = {
   productionBrowserSourceMaps: !isDev,
   reactStrictMode: false,
-  swcMinify: !isDev,
   compiler: {
     removeConsole: !isDev
       ? {
