@@ -1,3 +1,4 @@
+import Breadcrumbs from '@/app/components/Breadcrumbs';
 import { fetchConversationById } from '@/app/lib/data/conversations';
 import ConversationDetails from '@/app/ui/conversations';
 import { Metadata } from 'next';
@@ -33,7 +34,21 @@ async function ConversationPage({ params }: Props) {
     notFound();
   }
 
-  return <ConversationDetails conversation={conversation} />;
+  return (
+    <main className="flex h-full flex-col">
+      <Breadcrumbs
+        breadcrumbs={[
+          { label: 'Conversations', href: '/' },
+          {
+            label: `Conversation (${params.id})`,
+            href: `/conversations/${params.id}`,
+            active: true,
+          },
+        ]}
+      />
+      <ConversationDetails conversation={conversation} />
+    </main>
+  );
 }
 
 export default ConversationPage;

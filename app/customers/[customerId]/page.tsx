@@ -1,3 +1,4 @@
+import Breadcrumbs from '@/app/components/Breadcrumbs';
 import { fetchCustomerById } from '@/app/lib/data/customers';
 import CustomerDetails from '@/app/ui/customers';
 import { Metadata } from 'next';
@@ -33,7 +34,21 @@ async function CustomerPage({ params }: Props) {
     notFound();
   }
 
-  return <CustomerDetails customer={customer} />;
+  return (
+    <main className="flex h-full flex-col">
+      <Breadcrumbs
+        breadcrumbs={[
+          { label: 'Customers', href: '/customers' },
+          {
+            label: `Customer (${params.customerId})`,
+            href: `/customers/${params.customerId}`,
+            active: true,
+          },
+        ]}
+      />
+      <CustomerDetails customer={customer} />
+    </main>
+  );
 }
 
 export default CustomerPage;
