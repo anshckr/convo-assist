@@ -1,6 +1,5 @@
 const withPWAInit = require('next-pwa');
 
-// const runtimeCaching = require('./app/lib/cache.js');
 const runtimeCaching = require('next-pwa/cache');
 
 const isDev = process.env.NODE_ENV !== 'production';
@@ -23,8 +22,7 @@ const withPWA = withPWAInit({
   disable: isDev,
 
   exclude: [
-    // add buildExcludes here
-    ({ asset, compilation }) => {
+    ({ asset }) => {
       if (
         asset.name.startsWith('server/') ||
         asset.name.match(
