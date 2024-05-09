@@ -1,9 +1,6 @@
 'use client';
 
 import {
-  Accordion,
-  AccordionBody,
-  AccordionHeader,
   Button,
   Card,
   Dialog,
@@ -11,7 +8,6 @@ import {
   DialogFooter,
   DialogHeader,
   IconButton,
-  Input,
   Spinner,
   Tab,
   TabPanel,
@@ -28,14 +24,9 @@ import {
   TimelineHeader,
   Select,
   Option,
-  List,
-  ListItem,
 } from '@material-tailwind/react';
 
 export {
-  Accordion,
-  AccordionBody,
-  AccordionHeader,
   Button,
   Card,
   Dialog,
@@ -43,7 +34,6 @@ export {
   DialogFooter,
   DialogHeader,
   IconButton,
-  Input,
   Spinner,
   Tab,
   TabPanel,
@@ -60,6 +50,4 @@ export {
   TimelineHeader,
   Select,
   Option,
-  List,
-  ListItem,
 };

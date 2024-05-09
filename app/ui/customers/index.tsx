@@ -1,6 +1,6 @@
 'use client';
 
-import { List, ListItem, Typography } from '@/app/material-tailwind';
+import { Typography } from '@/app/material-tailwind';
 import { Customer } from '@/app/shared/types/customers';
 import EmptyCustomerMessagesList from './EmptyCustomerMessagesList';
 

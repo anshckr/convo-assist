@@ -174,12 +174,29 @@ const VirtualisedList: React.FC<Props> = ({
                   color="blue-gray"
                   className="flex items-center justify-between gap-2 font-normal leading-none opacity-70"
                 >
-                  Customer Name
+                  Customer Name{' '}
+                  <ChevronUpDownIcon strokeWidth={2} className="h-4 w-4" />
                 </Typography>
               </th>
               <th
                 scope="col"
                 className="w-1/4 cursor-pointer border-y bg-slate-50/50 p-4 py-5 pl-6 pr-3 font-medium transition-colors hover:bg-slate-50"
+                data-sortkey="status"
+                onClick={handleSorting}
+              >
+                <Typography
+                  variant="small"
+                  color="blue-gray"
+                  className="flex items-center justify-between gap-2 font-normal leading-none opacity-70"
+                >
+                  Status{' '}
+                  <ChevronUpDownIcon strokeWidth={2} className="h-4 w-4" />
+                </Typography>
+              </th>
+              <th
+                scope="col"
+                className="w-1/4 cursor-pointer border-y bg-slate-50/50 p-4 py-5 pl-6 pr-3 font-medium transition-colors hover:bg-slate-50"
+                data-sortkey="createdAt"
                 onClick={handleSorting}
               >
                 <Typography
