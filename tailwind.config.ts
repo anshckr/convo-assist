@@ -31,7 +31,6 @@ const config: Config = {
         '13': 'repeat(13, minmax(0, 1fr))',
       },
       colors: {
-        ...colors,
         primary: {
           100: '#E6F6FE',
           200: '#C0EAFC',

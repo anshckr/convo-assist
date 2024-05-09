@@ -44,6 +44,7 @@ const withPWA = withPWAInit({
   runtimeCaching: customRuntimeCaching,
   buildExcludes: [
     /\.map$/, // dont cache map files
+    /middleware-manifest\.json$/,
   ],
   reloadOnOnline: false,
 });

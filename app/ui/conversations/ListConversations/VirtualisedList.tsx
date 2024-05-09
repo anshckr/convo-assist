@@ -217,6 +217,15 @@ const VirtualisedList: React.FC<Props> = ({
             </tr>
           )}
           itemContent={(_, conversation: Conversation) => {
+            const date = new Date(conversation.createdAt);
+
+            const formatter = new Intl.DateTimeFormat('en-US', {
+              dateStyle: 'full',
+              timeStyle: 'long',
+            });
+
+            const formattedTime = formatter.format(date);
+
             return (
               <>
                 <td className="w-1/4 whitespace-nowrap py-3 pl-6 pr-3">
@@ -226,7 +235,7 @@ const VirtualisedList: React.FC<Props> = ({
                   <p>{conversation.status}</p>
                 </td>
                 <td className="w-1/4 whitespace-nowrap py-3 pl-6 pr-3">
-                  <p>{conversation.createdAt}</p>
+                  <p>{formattedTime}</p>
                 </td>
                 <td className="w-1/4 whitespace-nowrap py-3 pl-6 pr-3">
                   <div className="flex items-center justify-end gap-3">
