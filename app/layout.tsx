@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 import { ThemeProvider } from '@/app/material-tailwind';
-import TanStackProvider from '@/app/providers/TanStackProvider';
 import Dashboard from '@/app/ui/dashboard';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -40,9 +39,7 @@ export default function RootLayout({
       <body className={openSans.className}>
         <Pwa />
         <ThemeProvider>
-          <TanStackProvider>
-            <Dashboard>{children}</Dashboard>
-          </TanStackProvider>
+          <Dashboard>{children}</Dashboard>
         </ThemeProvider>
       </body>
     </html>
