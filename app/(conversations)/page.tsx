@@ -30,7 +30,7 @@ async function Page({
         <Search placeholder="Search conversation by customer name..." />
         <CreateConversation />
       </div>
-      <div className="mt-6 w-full flex-1">
+      <div className="mt-4 w-full flex-1">
         <Suspense key={query + currentPage} fallback={<CenteredLoader />}>
           <ListConversations query={query} currentPage={currentPage} />
         </Suspense>
