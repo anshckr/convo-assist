@@ -11,7 +11,7 @@ async function Page() {
     <main className="flex h-full w-full flex-col">
       <Breadcrumbs
         breadcrumbs={[
-          { label: 'Customers', href: '/' },
+          { label: 'Customers', href: '/customers' },
           {
             label: 'Create Customer',
             href: '/customers/create',

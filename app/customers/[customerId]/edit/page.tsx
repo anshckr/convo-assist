@@ -39,7 +39,7 @@ async function Page({ params }: Props) {
     <main className="flex h-full flex-col">
       <Breadcrumbs
         breadcrumbs={[
-          { label: 'Customers', href: '/' },
+          { label: 'Customers', href: '/customers' },
           {
             label: `Edit Customer (${customer.id})`,
             href: `/customers/${customerId}/edit`,
